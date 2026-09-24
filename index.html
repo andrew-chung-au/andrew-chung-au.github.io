@@ -279,12 +279,12 @@
   <header class="hero">
     <img class="portrait" src="andrew.jpg" alt="Andrew Chung" width="136" height="136">
     <div>
-      <span class="eyebrow">AI · Cloud · Data Engineering</span>
+      <span class="eyebrow">AI · Cloud · Data · Security</span>
       <h1>Andrew Chung</h1>
       <p class="role-line">I build retrieval-augmented generation systems, data pipelines and AWS infrastructure in Python and PostgreSQL. Based in Melbourne, Australia.</p>
     </div>
     <div class="hero-foot">
-      <p class="thesis">Each project is measured before I call it finished. I compare approaches on a benchmark, choose a configuration for a stated reason, and write the limits down next to the results.</p>
+      <p class="thesis">I evaluate my retrieval projects against benchmarks. I compare approaches, record why I chose a configuration, and document known limitations alongside the results.</p>
       <div class="cta-row">
         <a class="btn primary" href="https://github.com/andrew-chung-au" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -299,7 +299,7 @@
     </div>
   </header>
 
-  <div class="method" aria-label="How each project is run">
+  <div class="method" aria-label="How my retrieval projects are run">
     <div class="method-step"><div class="num">01</div><div class="label">Build</div><div class="desc">A working system over real, curated source data</div></div>
     <div class="method-step"><div class="num">02</div><div class="label">Evaluate</div><div class="desc">Compare retrieval or design approaches on a benchmark</div></div>
     <div class="method-step"><div class="num">03</div><div class="label">Select</div><div class="desc">Choose a configuration for a documented reason</div></div>
@@ -328,22 +328,22 @@
       <article class="project">
         <div class="project-top">
           <h3>AUS AI Security Navigator</h3>
-          <span class="status-pill">Evaluated</span>
+          <span class="status-pill">Evaluated · trialled on AWS</span>
         </div>
         <p class="desc">An audience-aware retrieval assistant over Australian Cyber Security Centre AI-security guidance, filtering grounded, source-cited answers by organisation size and role.</p>
         <div class="bench"><span class="k">benchmark</span> 27-question synthetic set · <span class="k">compared</span> text, vector, reranked-vector, hybrid · <span class="k">selected</span> reranked-vector retrieval · <span class="k">monitoring</span> latency, cost and feedback dashboard</div>
-        <p class="scope">Portfolio project; not a deployed advisory service.</p>
+        <p class="scope">Portfolio project, trialled on AWS EC2; not a production advisory service.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">Docker</span><span class="tag">Streamlit</span></div>
       </article>
 
       <article class="project">
         <div class="project-top">
           <h3>Cyber Threat Identifier</h3>
-          <span class="status-pill">Evaluated</span>
+          <span class="status-pill">Evaluated · trialled on AWS</span>
         </div>
         <p class="desc">Maps unstructured cyber-incident narratives to likely MITRE ATT&amp;CK techniques through a two-stage retrieval pipeline, built to support an analyst's judgement.</p>
         <div class="bench"><span class="k">pipeline</span> STIX ingestion → semantic search → cross-encoder reranking · <span class="k">benchmark</span> 226 expert-derived cases · <span class="k">review</span> pairwise LLM-as-a-judge + blinded human check</div>
-        <p class="scope">Independent evaluation project; technique assessments carry uncertainty flags.</p>
+        <p class="scope">Independent evaluation project, trialled on AWS EC2; technique assessments carry uncertainty flags.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">MITRE ATT&amp;CK</span></div>
       </article>
 
@@ -354,7 +354,7 @@
         </div>
         <p class="desc">Extended an open-source MCP server to cope with the scheduled retirement of its upstream travel API, adding a fallback engine and repeatable, disposable AWS infrastructure.</p>
         <div class="bench"><span class="k">infra</span> Terraform-provisioned EC2 with deploy and teardown · <span class="k">access</span> bound to localhost behind an encrypted SSH tunnel · <span class="k">secrets</span> AWS Secrets Manager + least-privilege IAM</div>
-        <p class="scope">Extension of an existing open-source project, evaluated as a proof of concept.</p>
+        <p class="scope">Extension of an existing open-source project. The AWS environment is provisioned on demand and torn down after use.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Terraform</span><span class="tag">AWS EC2</span><span class="tag">IAM</span><span class="tag">Secrets Manager</span></div>
       </article>
 
@@ -365,7 +365,7 @@
         </div>
         <p class="desc">A restaurant waitlist and table-management app. Guests join by QR code and track their status; staff manage tables, seating and no-shows from a login-protected dashboard.</p>
         <div class="bench"><span class="k">build</span> FastAPI + PostgreSQL, containerised, Alembic migrations · <span class="k">testing</span> API, integration and browser tests · <span class="k">guardrails</span> AGENTS.md and CLAUDE.md rules for the coding agent</div>
-        <p class="scope">Frontend prototyped in Lovable. Claude Code did most of the implementation from my spec, under my guardrails and review. Prepared for AWS deployment, which I'm building next.</p>
+        <p class="scope">Frontend prototyped in Lovable. Claude Code did most of the implementation from my spec, under my guardrails and review. Prepared for AWS deployment; not yet deployed.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">Claude Code</span></div>
       </article>
     </div>
@@ -374,12 +374,12 @@
   <section id="approach">
     <div class="section-head">
       <span class="eyebrow">Working method</span>
-      <h2>Building with AI coding tools</h2>
+      <h2>How I use AI tools</h2>
     </div>
     <div class="approach">
-      <h3>Spec first, verify every layer</h3>
-      <p>I use Claude Code for a large share of implementation, always from a written specification and within rules set in <span class="mono">AGENTS.md</span> and <span class="mono">CLAUDE.md</span> that limit where the agent can work and block unapproved dependencies. I check each layer (API contract, database, tests) before the next one starts, and keep handover notes so every session starts with context.</p>
-      <div class="tags"><span class="tag">Claude Code</span><span class="tag">Spec-first delivery</span><span class="tag">Agent guardrails</span></div>
+      <h3>Used where it helps</h3>
+      <p>I use AI coding tools where they help, and do more of the work by hand when I'm learning or practising a skill. When I use a coding agent, I work from a written specification, set rules that limit its scope, and review and test its output. Table Ready is an example: Claude Code worked within <span class="mono">AGENTS.md</span> and <span class="mono">CLAUDE.md</span> rules, and I checked each layer (API contract, database, tests) before the next one started.</p>
+      <div class="tags"><span class="tag">Claude Code</span><span class="tag">Spec-first delivery</span><span class="tag">Code review</span></div>
     </div>
   </section>
 
@@ -414,8 +414,8 @@
       <h2>Before the transition</h2>
     </div>
     <div class="bg-text">
-      <p>I spent ten years at the Hong Kong University of Science and Technology. My work there included leading the technical delivery and systems integration of an assessment platform used by more than 3,000 people across two universities, and applying Rasch statistical modelling to large-scale assessment data. I then taught at City University of Hong Kong, where I was Course Lead responsible for standardisation across a large course.</p>
-      <p>Since relocating to Melbourne I have built this portfolio through a structured program of study and projects in cloud infrastructure, applied AI, data engineering and cyber security.</p>
+      <p>I spent over a decade in higher education in Hong Kong. At the Hong Kong University of Science and Technology I led the technical delivery and systems integration of an assessment platform used by more than 3,000 people across two universities, and applied Rasch statistical modelling to large-scale assessment data. I then taught at City University of Hong Kong, where I was Course Lead responsible for standardisation across a large course.</p>
+      <p>Seeing how quickly AI was developing, I decided to move into the field. My technical foundation is in cyber security, through a Certificate IV that included a penetration test and a red, blue and purple team exercise. That led into cloud, which I took further by earning the AWS Certified Solutions Architect – Associate. Alongside that, and since, I've been building the AI and data projects on this page.</p>
     </div>
     <div class="creds">
       <div class="cred-row"><span class="cred-name">AWS Certified Solutions Architect – Associate</span><span class="cred-issuer">AWS</span></div>
@@ -423,7 +423,6 @@
       <div class="cred-row"><span class="cred-name">Certificate IV in Cyber Security</span><span class="cred-issuer">Holmesglen</span></div>
       <div class="cred-row"><span class="cred-name">Python Developer Certification</span><span class="cred-issuer">freeCodeCamp</span></div>
       <div class="cred-row"><span class="cred-name">Azure AI Fundamentals</span><span class="cred-issuer">Microsoft</span></div>
-      <div class="cred-row"><span class="cred-name">OCI Generative AI Certified Professional</span><span class="cred-issuer">Oracle</span></div>
       <div class="cred-row"><span class="cred-name">Claude 101 and Claude Code 101</span><span class="cred-issuer">Anthropic</span></div>
     </div>
   </section>
@@ -432,7 +431,7 @@
     <div class="section-head">
       <span class="eyebrow">Get in touch</span>
       <h2>Send me a message</h2>
-      <p>Leave your details and a short note. It comes straight to my inbox and I'll reply by email.</p>
+      <p>I'm open to AI, cloud, data engineering and security roles in Melbourne (on-site, hybrid or remote). Leave your details and a short note; it comes straight to my inbox and I'll reply by email.</p>
     </div>
     <div class="contact-layout">
       <form class="contact" id="contact-form" novalidate>
@@ -490,7 +489,7 @@
 <script>
 (function(){
   // Paste your form endpoint here once you've created one (e.g. "https://formspree.io/f/abcdwxyz").
-  var FORM_ENDPOINT = "";
+  var FORM_ENDPOINT = "https://formspree.io/f/xzezvvdk";
 
   var form = document.getElementById('contact-form');
   var status = document.getElementById('cf-status');
