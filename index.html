@@ -1,0 +1,546 @@
+<title>Andrew Chung</title>
+<meta name="description" content="Andrew Chung: cloud, AI and data engineering portfolio. Evaluated RAG systems, data pipelines and AWS infrastructure, Melbourne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F3F5F8;
+    --surface:#FFFFFF;
+    --surface-alt:#E8EDF4;
+    --ink:#14213A;
+    --ink-soft:#4E5B72;
+    --ink-faint:#7D889C;
+    --accent:#1F5FBF;
+    --accent-strong:#164A99;
+    --accent-soft:#DDE7F7;
+    --on-accent:#FFFFFF;
+    --verify:#0B7471;
+    --verify-soft:#D5EEEC;
+    --warn:#9C531B;
+    --warn-soft:#F6E7D8;
+    --danger:#B3261E;
+    --rule:#D5DCE7;
+    --shadow:0 1px 2px rgba(20,33,58,.05), 0 6px 20px rgba(20,33,58,.06);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0C1422;
+      --surface:#121C2E;
+      --surface-alt:#1A263C;
+      --ink:#E6ECF5;
+      --ink-soft:#A3B0C6;
+      --ink-faint:#6D7A92;
+      --accent:#6EA4F2;
+      --accent-strong:#9AC0F8;
+      --accent-soft:#1B2D4C;
+      --on-accent:#0C1422;
+      --verify:#56C7C2;
+      --verify-soft:#133A3B;
+      --warn:#E39C62;
+      --warn-soft:#382818;
+      --danger:#F28B82;
+      --rule:#24324A;
+      --shadow:0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.35);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0C1422;
+    --surface:#121C2E;
+    --surface-alt:#1A263C;
+    --ink:#E6ECF5;
+    --ink-soft:#A3B0C6;
+    --ink-faint:#6D7A92;
+    --accent:#6EA4F2;
+    --accent-strong:#9AC0F8;
+    --accent-soft:#1B2D4C;
+    --on-accent:#0C1422;
+    --verify:#56C7C2;
+    --verify-soft:#133A3B;
+    --warn:#E39C62;
+    --warn-soft:#382818;
+    --danger:#F28B82;
+    --rule:#24324A;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    padding-inline:20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  a{color:var(--accent-strong);}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px;
+  }
+  h1,h2,h3{font-family:"Instrument Serif", Georgia, "Times New Roman", serif;font-weight:400;margin:0;text-wrap:balance;}
+  .mono{font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;}
+  .eyebrow{
+    font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size:12px;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--accent-strong);font-weight:600;
+  }
+
+  /* nav */
+  nav{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+    margin-inline:-20px;padding-inline:20px;
+  }
+  .nav-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;}
+  .nav-name{font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;font-weight:600;font-size:14px;letter-spacing:.02em;}
+  .nav-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:13px;font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;}
+  .nav-links a:hover{color:var(--accent-strong);}
+  @media (max-width:560px){ .nav-links{gap:12px;} .nav-links a[href="#background"]{display:none;} }
+
+  /* hero */
+  header.hero{
+    padding-block:52px 36px;
+    display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;
+  }
+  .portrait{
+    width:136px;height:136px;border-radius:50%;
+    object-fit:cover;display:block;max-width:100%;
+    border:4px solid var(--surface);
+    box-shadow:0 0 0 1px var(--rule), var(--shadow);
+    background:var(--accent-soft);
+  }
+  header.hero h1{font-size:clamp(40px,7vw,62px);line-height:1.04;margin-top:8px;}
+  .role-line{font-size:clamp(16.5px,2.4vw,19px);color:var(--ink-soft);margin:12px 0 0;max-width:56ch;}
+  .hero-foot{grid-column:1 / -1;}
+  .thesis{
+    margin:0;font-size:16.5px;max-width:64ch;
+    padding:16px 18px;
+    background:var(--surface);
+    border:1px solid var(--rule);border-left:3px solid var(--accent);
+    border-radius:4px;box-shadow:var(--shadow);
+  }
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .btn{
+    font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size:13px;font-weight:500;
+    padding:10px 16px;border-radius:5px;
+    text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--rule);color:var(--ink);background:var(--surface);
+    cursor:pointer;transition:border-color .15s, background .15s;
+  }
+  .btn:hover{border-color:var(--accent);}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+  .btn.primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);}
+  .btn svg{width:14px;height:14px;flex:none;}
+  @media (max-width:560px){
+    header.hero{grid-template-columns:1fr;gap:18px;padding-block:36px 28px;}
+    .portrait{width:104px;height:104px;}
+  }
+
+  /* method strip */
+  .method{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1px;background:var(--rule);
+    border:1px solid var(--rule);border-radius:6px;overflow:hidden;
+    margin-block:40px;
+  }
+  .method-step{background:var(--surface);padding:16px 14px;min-width:0;}
+  .method-step .num{font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;font-size:11px;color:var(--accent-strong);font-weight:600;}
+  .method-step .label{font-weight:600;font-size:14px;margin-top:6px;}
+  .method-step .desc{font-size:12.5px;color:var(--ink-soft);margin-top:4px;line-height:1.4;}
+  @media (max-width:620px){ .method{grid-template-columns:repeat(2,1fr);} }
+
+  section{padding-block:36px;}
+  section + section{border-top:1px solid var(--rule);}
+  .section-head{margin-bottom:24px;}
+  .section-head .eyebrow{display:block;margin-bottom:8px;}
+  .section-head h2{font-size:30px;}
+  .section-head p{margin:10px 0 0;color:var(--ink-soft);max-width:60ch;font-size:15px;}
+
+  /* projects */
+  .projects{display:flex;flex-direction:column;gap:18px;}
+  .project{
+    background:var(--surface);border:1px solid var(--rule);border-radius:8px;
+    padding:22px 24px;box-shadow:var(--shadow);
+  }
+  .project-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .project h3{font-size:23px;}
+  .status-pill{
+    font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size:11px;font-weight:600;letter-spacing:.03em;
+    padding:3px 9px;border-radius:999px;white-space:nowrap;
+    background:var(--verify-soft);color:var(--verify);
+  }
+  .status-pill.cloud{background:var(--accent-soft);color:var(--accent-strong);}
+  .status-pill.warn{background:var(--warn-soft);color:var(--warn);}
+  .project p.desc{margin:8px 0 0;color:var(--ink-soft);max-width:64ch;font-size:15px;}
+  .bench{
+    margin-top:14px;
+    font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size:12.5px;line-height:1.7;
+    background:var(--surface-alt);border-radius:5px;padding:10px 12px;
+  }
+  .bench .k{color:var(--ink-faint);}
+  .scope{margin:12px 0 0;font-size:13px;color:var(--warn);padding-left:12px;border-left:2px solid var(--warn);}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+  .tag{
+    font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size:11.5px;padding:3px 9px;border-radius:4px;
+    background:var(--surface-alt);color:var(--ink-soft);
+  }
+
+  /* approach */
+  .approach{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:24px;box-shadow:var(--shadow);}
+  .approach h3{font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;font-size:18px;font-weight:600;}
+  .approach p{margin:8px 0 0;color:var(--ink-soft);font-size:15px;max-width:62ch;}
+
+  /* skills */
+  .skill-groups{display:flex;flex-direction:column;gap:20px;}
+  .skill-group .head{font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;}
+  .skill-chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{
+    font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;font-size:12.5px;
+    padding:5px 11px;border-radius:5px;
+    background:var(--surface);border:1px solid var(--rule);color:var(--ink);
+  }
+
+  /* background */
+  .bg-text{max-width:66ch;color:var(--ink-soft);font-size:15.5px;}
+  .bg-text p{margin:0;}
+  .bg-text p + p{margin-top:12px;}
+  .creds{margin-top:22px;}
+  .cred-row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-block:10px;border-top:1px solid var(--rule);font-size:14px;}
+  .cred-row:last-child{border-bottom:1px solid var(--rule);}
+  .cred-name{font-weight:500;}
+  .cred-issuer{font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;font-size:12.5px;color:var(--ink-soft);}
+
+  /* contact */
+  .contact-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:start;}
+  @media (max-width:680px){ .contact-layout{grid-template-columns:1fr;} }
+  form.contact{
+    background:var(--surface);border:1px solid var(--rule);border-radius:8px;
+    padding:22px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media (max-width:480px){ .field-row{grid-template-columns:1fr;} }
+  label{font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);}
+  label .opt{text-transform:none;letter-spacing:0;color:var(--ink-faint);}
+  input, textarea{
+    font:inherit;font-size:15px;color:var(--ink);
+    background:var(--paper);
+    border:1px solid var(--rule);border-radius:5px;
+    padding:10px 12px;width:100%;
+  }
+  textarea{min-height:130px;resize:vertical;}
+  input:focus, textarea:focus{border-color:var(--accent);}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .form-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .form-status{font-size:14px;margin:0;}
+  .form-status.ok{color:var(--verify);}
+  .form-status.err{color:var(--danger);}
+  .btn[disabled]{opacity:.6;cursor:progress;}
+
+  .side-links{display:flex;flex-direction:column;gap:12px;}
+  .side-card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;box-shadow:var(--shadow);}
+  .side-card .head{font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);}
+  .side-card .value{margin-top:6px;font-size:15px;font-weight:500;word-break:break-word;}
+
+  footer{padding-block:34px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;border-top:1px solid var(--rule);}
+  footer .foot-note{font-size:12.5px;color:var(--ink-faint);margin-top:10px;}
+  ::selection{background:var(--accent-soft);}
+</style>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">ANDREW CHUNG</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <img class="portrait" src="andrew.jpg" alt="Andrew Chung" width="136" height="136">
+    <div>
+      <span class="eyebrow">AI · Cloud · Data Engineering</span>
+      <h1>Andrew Chung</h1>
+      <p class="role-line">I build retrieval-augmented generation systems, data pipelines and AWS infrastructure in Python and PostgreSQL. Based in Melbourne, Australia.</p>
+    </div>
+    <div class="hero-foot">
+      <p class="thesis">Each project is measured before I call it finished. I compare approaches on a benchmark, choose a configuration for a stated reason, and write the limits down next to the results.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/andrew-chung-au" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/andrewchung-cloudai/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2.5 1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM.9 6h3.2v9.5H.9V6zm5.2 0h3.1v1.3h.04c.43-.82 1.49-1.68 3.06-1.68 3.27 0 3.88 2.15 3.88 4.95v4.93h-3.2v-4.37c0-1.04-.02-2.38-1.45-2.38-1.45 0-1.67 1.13-1.67 2.3v4.45H6.1V6z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="#contact">Send a message</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="method" aria-label="How each project is run">
+    <div class="method-step"><div class="num">01</div><div class="label">Build</div><div class="desc">A working system over real, curated source data</div></div>
+    <div class="method-step"><div class="num">02</div><div class="label">Evaluate</div><div class="desc">Compare retrieval or design approaches on a benchmark</div></div>
+    <div class="method-step"><div class="num">03</div><div class="label">Select</div><div class="desc">Choose a configuration for a documented reason</div></div>
+    <div class="method-step"><div class="num">04</div><div class="label">Document</div><div class="desc">Record scope, limits and what is still unproven</div></div>
+  </div>
+
+  <section id="work">
+    <div class="section-head">
+      <span class="eyebrow">Selected work</span>
+      <h2>Evaluated projects</h2>
+      <p>Independently built portfolio projects. Status and scope are stated on each one. Code and full write-ups are on <a href="https://github.com/andrew-chung-au" target="_blank" rel="noopener">GitHub</a>.</p>
+    </div>
+
+    <div class="projects">
+      <article class="project">
+        <div class="project-top">
+          <h3>DER RegCheck</h3>
+          <span class="status-pill">Evaluated · trialled on AWS</span>
+        </div>
+        <p class="desc">A retrieval-augmented generation assistant for distributed energy resource interconnection research over public California Rule 21 and Southern California Edison documents. Answers carry explicit citations and are rejected outright if a citation can't be verified.</p>
+        <div class="bench"><span class="k">benchmark</span> 100-query retrieval set · <span class="k">compared</span> lexical, vector, hybrid, reranked, query-rewrite · <span class="k">selected</span> pgvector + cross-encoder reranking · <span class="k">review</span> LLM-as-a-judge + blinded human scoring</div>
+        <p class="scope">Research-support prototype; does not give legal, regulatory or compliance advice. Deployed temporarily on AWS EC2 for peer review, not production-hardened.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">Docker</span><span class="tag">Streamlit</span></div>
+      </article>
+
+      <article class="project">
+        <div class="project-top">
+          <h3>AUS AI Security Navigator</h3>
+          <span class="status-pill">Evaluated</span>
+        </div>
+        <p class="desc">An audience-aware retrieval assistant over Australian Cyber Security Centre AI-security guidance, filtering grounded, source-cited answers by organisation size and role.</p>
+        <div class="bench"><span class="k">benchmark</span> 27-question synthetic set · <span class="k">compared</span> text, vector, reranked-vector, hybrid · <span class="k">selected</span> reranked-vector retrieval · <span class="k">monitoring</span> latency, cost and feedback dashboard</div>
+        <p class="scope">Portfolio project; not a deployed advisory service.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">Docker</span><span class="tag">Streamlit</span></div>
+      </article>
+
+      <article class="project">
+        <div class="project-top">
+          <h3>Cyber Threat Identifier</h3>
+          <span class="status-pill">Evaluated</span>
+        </div>
+        <p class="desc">Maps unstructured cyber-incident narratives to likely MITRE ATT&amp;CK techniques through a two-stage retrieval pipeline, built to support an analyst's judgement.</p>
+        <div class="bench"><span class="k">pipeline</span> STIX ingestion → semantic search → cross-encoder reranking · <span class="k">benchmark</span> 226 expert-derived cases · <span class="k">review</span> pairwise LLM-as-a-judge + blinded human check</div>
+        <p class="scope">Independent evaluation project; technique assessments carry uncertainty flags.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">MITRE ATT&amp;CK</span></div>
+      </article>
+
+      <article class="project">
+        <div class="project-top">
+          <h3>Amadeus MCP Server</h3>
+          <span class="status-pill cloud">AWS · Terraform</span>
+        </div>
+        <p class="desc">Extended an open-source MCP server to cope with the scheduled retirement of its upstream travel API, adding a fallback engine and repeatable, disposable AWS infrastructure.</p>
+        <div class="bench"><span class="k">infra</span> Terraform-provisioned EC2 with deploy and teardown · <span class="k">access</span> bound to localhost behind an encrypted SSH tunnel · <span class="k">secrets</span> AWS Secrets Manager + least-privilege IAM</div>
+        <p class="scope">Extension of an existing open-source project, evaluated as a proof of concept.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Terraform</span><span class="tag">AWS EC2</span><span class="tag">IAM</span><span class="tag">Secrets Manager</span></div>
+      </article>
+
+      <article class="project">
+        <div class="project-top">
+          <h3>Table Ready</h3>
+          <span class="status-pill warn">Not yet deployed</span>
+        </div>
+        <p class="desc">A restaurant waitlist and table-management app. Guests join by QR code and track their status; staff manage tables, seating and no-shows from a login-protected dashboard.</p>
+        <div class="bench"><span class="k">build</span> FastAPI + PostgreSQL, containerised, Alembic migrations · <span class="k">testing</span> API, integration and browser tests · <span class="k">guardrails</span> AGENTS.md and CLAUDE.md rules for the coding agent</div>
+        <p class="scope">Frontend prototyped in Lovable. Claude Code did most of the implementation from my spec, under my guardrails and review. Prepared for AWS deployment, which I'm building next.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">Claude Code</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="section-head">
+      <span class="eyebrow">Working method</span>
+      <h2>Building with AI coding tools</h2>
+    </div>
+    <div class="approach">
+      <h3>Spec first, verify every layer</h3>
+      <p>I use Claude Code for a large share of implementation, always from a written specification and within rules set in <span class="mono">AGENTS.md</span> and <span class="mono">CLAUDE.md</span> that limit where the agent can work and block unapproved dependencies. I check each layer (API contract, database, tests) before the next one starts, and keep handover notes so every session starts with context.</p>
+      <div class="tags"><span class="tag">Claude Code</span><span class="tag">Spec-first delivery</span><span class="tag">Agent guardrails</span></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <span class="eyebrow">Capabilities</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <div class="head">Programming &amp; Data</div>
+        <div class="skill-chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">PostgreSQL</span><span class="chip">pgvector</span><span class="chip">ETL</span><span class="chip">Pandas</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="head">Applied AI &amp; Retrieval</div>
+        <div class="skill-chips"><span class="chip">RAG</span><span class="chip">Vector search</span><span class="chip">Retrieval evaluation</span><span class="chip">LLM-as-a-judge</span><span class="chip">Citation validation</span><span class="chip">Prompt engineering</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="head">Cloud &amp; Infrastructure</div>
+        <div class="skill-chips"><span class="chip">AWS</span><span class="chip">EC2</span><span class="chip">IAM</span><span class="chip">AWS Secrets Manager</span><span class="chip">Terraform</span><span class="chip">Docker</span><span class="chip">SSH tunnelling</span><span class="chip">Linux</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="head">Tools</div>
+        <div class="skill-chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Claude Code</span><span class="chip">Streamlit</span><span class="chip">Docker Compose</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <div class="section-head">
+      <span class="eyebrow">Background</span>
+      <h2>Before the transition</h2>
+    </div>
+    <div class="bg-text">
+      <p>I spent ten years at the Hong Kong University of Science and Technology. My work there included leading the technical delivery and systems integration of an assessment platform used by more than 3,000 people across two universities, and applying Rasch statistical modelling to large-scale assessment data. I then taught at City University of Hong Kong, where I was Course Lead responsible for standardisation across a large course.</p>
+      <p>Since relocating to Melbourne I have built this portfolio through a structured program of study and projects in cloud infrastructure, applied AI, data engineering and cyber security.</p>
+    </div>
+    <div class="creds">
+      <div class="cred-row"><span class="cred-name">AWS Certified Solutions Architect – Associate</span><span class="cred-issuer">AWS</span></div>
+      <div class="cred-row"><span class="cred-name">LLM Zoomcamp 2026: 2nd of 2,000+ enrolled learners</span><span class="cred-issuer">DataTalksClub</span></div>
+      <div class="cred-row"><span class="cred-name">Certificate IV in Cyber Security</span><span class="cred-issuer">Holmesglen</span></div>
+      <div class="cred-row"><span class="cred-name">Python Developer Certification</span><span class="cred-issuer">freeCodeCamp</span></div>
+      <div class="cred-row"><span class="cred-name">Azure AI Fundamentals</span><span class="cred-issuer">Microsoft</span></div>
+      <div class="cred-row"><span class="cred-name">OCI Generative AI Certified Professional</span><span class="cred-issuer">Oracle</span></div>
+      <div class="cred-row"><span class="cred-name">Claude 101 and Claude Code 101</span><span class="cred-issuer">Anthropic</span></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Send me a message</h2>
+      <p>Leave your details and a short note. It comes straight to my inbox and I'll reply by email.</p>
+    </div>
+    <div class="contact-layout">
+      <form class="contact" id="contact-form" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Your email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-company">Company or role <span class="opt">(optional)</span></label>
+          <input id="cf-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="cf-gotcha">Leave this empty</label>
+          <input id="cf-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-foot">
+          <button class="btn primary" type="submit" id="cf-submit">Send message</button>
+          <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <div class="side-links">
+        <div class="side-card">
+          <div class="head">LinkedIn</div>
+          <div class="value"><a href="https://www.linkedin.com/in/andrewchung-cloudai/" target="_blank" rel="noopener">andrewchung-cloudai</a></div>
+        </div>
+        <div class="side-card">
+          <div class="head">GitHub</div>
+          <div class="value"><a href="https://github.com/andrew-chung-au" target="_blank" rel="noopener">andrew-chung-au</a></div>
+        </div>
+        <div class="side-card">
+          <div class="head">Location</div>
+          <div class="value">Greater Melbourne, Australia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="eyebrow">Andrew Chung · 2026</div>
+  <div class="foot-note">Portfolio projects are independently built and evaluated. Status and scope are noted on each one.</div>
+</footer>
+
+<script>
+(function(){
+  // Paste your form endpoint here once you've created one (e.g. "https://formspree.io/f/abcdwxyz").
+  var FORM_ENDPOINT = "";
+
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('cf-status');
+  var submit = document.getElementById('cf-submit');
+  if(!form) return;
+
+  function show(msg, kind){
+    status.textContent = msg;
+    status.className = 'form-status' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = form.elements['name'].value.trim();
+    var email = form.elements['email'].value.trim();
+    var message = form.elements['message'].value.trim();
+
+    if(!name || !email || !message){
+      show('Please fill in your name, email and message.', 'err');
+      return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      show('That email address doesn’t look right. Please check it.', 'err');
+      return;
+    }
+    if(form.elements['_gotcha'].value){ return; }
+
+    if(!FORM_ENDPOINT){
+      show('The form isn’t connected yet. Please message me on LinkedIn for now.', 'err');
+      return;
+    }
+
+    var data = new FormData(form);
+    data.append('_subject', 'Portfolio message from ' + name);
+    submit.disabled = true;
+    show('Sending…');
+
+    fetch(FORM_ENDPOINT, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+      .then(function(res){
+        if(res.ok){
+          form.reset();
+          show('Sent. Thanks, I’ll reply by email.', 'ok');
+        } else {
+          show('Your message didn’t go through. Please try again or message me on LinkedIn.', 'err');
+        }
+      })
+      .catch(function(){
+        show('Your message couldn’t be sent from here. Please message me on LinkedIn instead.', 'err');
+      })
+      .then(function(){ submit.disabled = false; });
+  });
+})();
+</script>
